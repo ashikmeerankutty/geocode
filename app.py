@@ -6,7 +6,11 @@ app = Flask(__name__)
 
 expr = r'@(?P<lat>([0-9]+.[0-9]+)),(?P<lng>([0-9]+.[0-9]+))'
 
-@app.route('/api/<place>')
+@app.route('/')
+def status():
+    return jsonify({"status":"OK"}),200
+
+@app.route('/<place>')
 def findplace(place):
     place = place.replace(' ','+')
     response = requests.get('https://www.google.com/maps/place/'+place)
