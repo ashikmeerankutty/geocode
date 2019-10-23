@@ -10,7 +10,7 @@ expr = r'@(?P<lat>([0-9]+.[0-9]+)),(?P<lng>([0-9]+.[0-9]+))'
 def status():
     return jsonify({"status":"OK"}),200
 
-@app.route('/<place>', methods=['GET'])
+@app.route('/places/<place>', methods=['GET'])
 def findplace(place):
     place = place.replace(' ','+')
     response = requests.get('https://www.google.com/maps/place/'+place)
