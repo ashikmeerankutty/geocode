@@ -9,7 +9,6 @@ expr = r'@(?P<lat>([0-9]+.[0-9]+)),(?P<lng>([0-9]+.[0-9]+))'
 @app.route('/api/<place>')
 def findplace(place):
     place = place.replace(' ','+')
-    print(place)
     response = requests.get('https://www.google.com/maps/place/'+place)
     if re.search(expr,response.text):
         m = re.search(expr,response.text)
